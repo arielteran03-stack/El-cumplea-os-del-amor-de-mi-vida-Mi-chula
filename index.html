@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniela ♡ 22</title>
+
+<style>
+:root{
+  --pink:#ff4da6;
+  --pink2:#ff8ccf;
+  --bg1:#150912;
+  --bg2:#2c0f21;
+  --text:rgba(255,255,255,.95);
+  --muted:rgba(255,255,255,.8);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:"Segoe UI",system-ui,Arial,sans-serif;
+  color:var(--text);
+  min-height:100vh;
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(255,77,166,.35), transparent 60%),
+    radial-gradient(900px 600px at 80% 30%, rgba(255,136,199,.25), transparent 55%),
+    linear-gradient(160deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
+}
+
+/* Fondo animado */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,140,207,.18), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255,77,166,.18), transparent 40%);
+  animation: floatBg 18s ease-in-out infinite alternate;
+  z-index:-1;
+}
+@keyframes floatBg{
+  from{ transform:translateY(0) }
+  to{ transform:translateY(-80px) }
+}
+
+/* ===== SPLASH ===== */
+.splash{
+  position:fixed;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding:22px;
+  z-index:9999;
+}
+
+.splashCard{
+  width:min(900px,96vw);
+  padding:40px;
+  border-radius:36px;
+  text-align:center;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.25);
+  box-shadow:0 40px 120px rgba(0,0,0,.6);
+  backdrop-filter:blur(14px);
+}
+
+.splashTitle{
+  font-size:clamp(42px,5.5vw,72px);
+  font-weight:950;
+  margin-bottom:14px;
+}
+
+.splashSub{
+  min-height:3em;
+  font-size:clamp(20px,2.5vw,24px);
+  line-height:1.6;
+  color:var(--muted);
+  margin-bottom:30px;
+}
+
+.cursor::after{
+  content:"|";
+  animation:blink 1s steps(2,start) infinite;
+}
+@keyframes blink{to{visibility:hidden}}
+
+/* Botón palpitante */
+.btn{
+  border:0;
+  cursor:pointer;
+  border-radius:999px;
+  padding:18px 34px;
+  font-size:22px;
+  font-weight:950;
+  color:#2a0b18;
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
+  box-shadow:0 0 0 rgba(255,77,166,.6);
+  animation:pulse 1.8s infinite;
+  transition:transform .15s ease;
+}
+@keyframes pulse{
+  0%{ box-shadow:0 0 0 0 rgba(255,77,166,.6) }
+  70%{ box-shadow:0 0 0 22px rgba(255,77,166,0) }
+  100%{ box-shadow:0 0 0 0 rgba(255,77,166,0) }
+}
+.btn:hover{ transform:scale(1.05) }
+
+/* ===== MAIN ===== */
+.wrap{
+  width:min(1100px,94vw);
+  margin:70px auto 100px;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.wrap.show{opacity:1;transform:none}
+
+.card{
+  padding:44px;
+  border-radius:30px;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.2);
+  box-shadow:0 30px 80px rgba(0,0,0,.45);
+  backdrop-filter: blur(10px);
+}
+
+.badge{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  padding:12px 22px;
+  border-radius:999px;
+  background:rgba(255,77,166,.35);
+  font-weight:900;
+  font-size:18px;
+  letter-spacing:.2px;
+  margin-bottom:18px;
+}
+
+h1{
+  font-size:clamp(40px,5vw,64px);
+  margin:10px 0 14px;
+  font-weight:950;
+}
+
+.lead{
+  font-size:clamp(20px,2.4vw,24px);
+  line-height:1.6;
+  color:var(--muted);
+  max-width:72ch;
+}
+
+/* Controles */
+.controls{
+  margin-top:22px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.controls button{
+  padding:14px 26px;
+  border-radius:999px;
+  border:0;
+  font-size:18px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+  transition: transform .12s ease;
+}
+.controls button:hover{ transform: translateY(-2px); }
+
+.primary{ background:linear-gradient(135deg,var(--pink),var(--pink2)); color:#240a16; }
+.soft{ background:rgba(255,255,255,.12); color:#fff; border:1px solid rgba(255,255,255,.18); }
+
+/* Frase */
+.quote{
+  margin:30px 0 10px;
+  font-size:clamp(22px,2.6vw,28px);
+  font-style:italic;
+  color:#fff;
+}
+.signature{
+  font-size:22px;
+  font-weight:850;
+}
+
+/* ===== CONTADOR ===== */
+.counterBox{
+  margin-top:22px;
+  padding:18px;
+  border-radius:22px;
+  background:rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.18);
+}
+.counterTitle{font-size:20px;font-weight:900}
+.counterPretty{margin-top:10px;font-size:18px}
+.counterTotal{margin-top:6px;font-size:14px;color:var(--muted)}
+
+/* ===== HISTORIA CON FOTOS ===== */
+.storyTitle{
+  margin-top:44px;
+  font-size:clamp(24px,2.6vw,30px);
+  font-weight:950;
+}
+.storySub{
+  margin-top:10px;
+  color: rgba(255,255,255,.78);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 75ch;
+}
+
+.timeline{
+  margin-top:22px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.chapter{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:16px;
+  padding:18px;
+  border-radius:26px;
+  border:1px solid rgba(255,255,255,.18);
+  background: rgba(0,0,0,.16);
+}
+
+@media (min-width: 860px){
+  .chapter{
+    grid-template-columns: 360px 1fr;
+    align-items:center;
+  }
+}
+
+.photo{
+  border-radius:22px;
+  overflow:hidden;
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,.22);
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+  transition: transform .18s ease;
+  aspect-ratio: 4 / 5;
+  background: rgba(255,255,255,.06);
+}
+.photo:hover{ transform: scale(1.03); }
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 12px;
+  border-radius:999px;
+  background: rgba(255,77,166,.18);
+  border:1px solid rgba(255,77,166,.30);
+  font-weight:900;
+}
+
+.chapterH{
+  margin: 14px 0 8px;
+  font-size: clamp(22px, 2.2vw, 26px);
+  font-weight:950;
+}
+.chapterP{
+  margin:0;
+  color: rgba(255,255,255,.82);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* ===== MODAL ===== */
+.modal{
+  position:fixed;
+  inset:0;
+  display:none;
+  place-items:center;
+  background:rgba(0,0,0,.80);
+  backdrop-filter: blur(8px);
+  z-index:200;
+  padding:18px;
+}
+.modal.open{ display:grid; }
+.modalBox{
+  width:min(1000px, 96vw);
+  background: rgba(20,10,18,.90);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:28px;
+  overflow:hidden;
+  box-shadow: 0 40px 120px rgba(0,0,0,.65);
+}
+.modalTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding: 12px 14px;
+  border-bottom:1px solid rgba(255,255,255,.14);
+}
+.modalTop strong{ color: rgba(255,255,255,.90); }
+.close{
+  background: rgba(255,255,255,.10);
+  border:1px solid rgba(255,255,255,.16);
+  padding: 10px 12px;
+  border-radius: 999px;
+  font-weight: 950;
+  color: rgba(255,255,255,.92);
+  cursor:pointer;
+}
+.modalImg{
+  width:100%;
+  height:min(72vh, 720px);
+  background:#0b0610;
+}
+.modalImg img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+
+/* ===== CORAZONES ===== */
+.float{
+  position:fixed;
+  top:-10px;
+  width:16px;
+  height:16px;
+  background:var(--pink);
+  transform:rotate(45deg);
+  animation:fall linear forwards;
+  z-index:300;
+  filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+}
+.float::before,.float::after{
+  content:"";
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:inherit;
+}
+.float::before{left:-8px}
+.float::after{top:-8px}
+@keyframes fall{ to{transform:translateY(120vh) rotate(720deg)} }
+
+audio{display:none}
+/* ===== VIDEO INTRO ===== */
+.videoIntro{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  background:black;
+  display:grid;
+  place-items:center;
+}
+.videoIntro{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  background:
+    radial-gradient(circle at center, rgba(255,77,166,.25), #000 70%);
+  display:grid;
+  place-items:center;
+  padding:20px;
+}
+
+.videoIntro video{
+  width:100%;
+  max-width:420px;      /* controla el tamaño */
+  max-height:75vh;      /* evita que sea gigante */
+  object-fit:contain;   /* NO recorta */
+  border-radius:26px;
+  box-shadow:0 30px 90px rgba(0,0,0,.85);
+}
+
+.skipHint{
+  position:absolute;
+  bottom:24px;
+  font-size:14px;
+  color:rgba(255,255,255,.75);
+  letter-spacing:.3px;
+  animation:fadeHint 2s infinite;
+}
+
+@keyframes fadeHint{
+  0%,100%{opacity:.4}
+  50%{opacity:1}
+}
+
+
+.skipHint{
+  position:absolute;
+  bottom:30px;
+  font-size:14px;
+  color:rgba(255,255,255,.75);
+  letter-spacing:.3px;
+  animation:fadeHint 2s infinite;
+}
+
+@keyframes fadeHint{
+  0%,100%{opacity:.4}
+  50%{opacity:1}
+}
+
+</style>
+</head>
+
+<body>
+<!-- VIDEO INTRO -->
+<section class="videoIntro" id="videoIntro">
+  <video id="introVideo" autoplay muted playsinline>
+    <source src="assets/intro.MP4" type="video/mp4">
+    Tu navegador no soporta video.
+  </video>
+  <div class="skipHint">Toca para continuar 💕</div>
+</section>
+
+<!-- SPLASH -->
+<section class="splash" id="splash">
+  <div class="splashCard">
+    <div class="splashTitle">Tengo una sorpresa para ti ✨</div>
+    <p class="splashSub cursor" id="typeText"></p>
+    <button class="btn" id="btnOpen">Ábreme, amor jejej</button>
+  </div>
+</section>
+
+<!-- MAIN -->
+<div class="wrap" id="main">
+  <div class="card">
+    <div class="badge">💖 Daniela mi chulita • 22 primaveras</div>
+    <h1>Feliz cumpleaños, Chulita 💖</h1>
+
+    <p class="lead">
+      Hoy celebro tus 22 primaveras mi amor. Gracias por estar conmigo y hacer mi vida más bonita.
+      Que este nuevo año nos traiga aventura, paz, y amor del que se queda.
+      Mi vida entera quiero que cumplas muchisimos años mas y poder estar a tu lado siempre, que tus deseos y nuestros deseos se cumplan.
+      Que Dios te bendiga siempre mi amor.
+
+    </p>
+
+    <div class="controls">
+      <button class="primary" id="btnPlay">▶ Música</button>
+      <button class="soft" id="btnHearts">💗 Corazones</button>
+      <button class="soft" id="btnMsg">💌 Otra frase</button>
+    </div>
+
+    <p class="quote" id="quote">“Si pudiera elegir de nuevo, te elegiría igual… pero más temprano.”</p>
+    <div class="signature">Con amor, El chulo 💘</div>
+
+    <!-- CONTADOR -->
+    <div class="counterBox">
+      <div class="counterTitle">⏳ Nosotros desde el 2 de enero de 2024</div>
+      <div class="counterPretty" id="counterPretty"></div>
+      <div class="counterTotal" id="counterTotal"></div>
+    </div>
+
+    <!-- HISTORIA -->
+    <div class="storyTitle">Capitulos de porque quererte tanto 📖</div>
+    <div class="storySub">
+      Cada foto guarda algo: una risa, un abrazo, una noche bonita, un “aquí me quedo”.
+    </div>
+
+    <div class="timeline" id="timeline"></div>
+  </div>
+</div>
+
+<!-- AUDIO -->
+<audio id="music" preload="auto" loop>
+  <source src="assets/music.MP3" type="audio/mpeg">
+</audio>
+
+<!-- MODAL -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modalBox">
+    <div class="modalTop">
+      <strong id="modalTitle">📷</strong>
+      <button class="close" id="btnClose">✕ Cerrar</button>
+    </div>
+    <div class="modalImg">
+      <img id="modalImg" alt="Foto ampliada">
+    </div>
+  </div>
+</div>
+
+<script>
+  // ===== VIDEO INTRO =====
+const videoIntro = document.getElementById("videoIntro");
+const introVideo = document.getElementById("introVideo");
+
+// Al terminar el video → mostrar splash
+introVideo.addEventListener("ended", () => {
+  videoIntro.style.display = "none";
+});
+
+// Permite tocar para saltar
+videoIntro.addEventListener("click", () => {
+  introVideo.pause();
+  videoIntro.style.display = "none";
+});
+
+/* ================== Splash + máquina de escribir ================== */
+const MENSAJE = "Hola chulita, te dedico esto porque te amo mucho, como la trucha al trucho 💕";
+const typeEl = document.getElementById("typeText");
+const btnOpen = document.getElementById("btnOpen");
+const splash = document.getElementById("splash");
+const main = document.getElementById("main");
+
+async function typeWriter(text){
+  typeEl.textContent = "";
+  for(let i=0;i<text.length;i++){
+    typeEl.textContent += text[i];
+    await new Promise(r=>setTimeout(r,32));
+  }
+  typeEl.classList.remove("cursor");
+}
+typeWriter(MENSAJE);
+
+/* ================== Música (play/pause con fade suave) ================== */
+const music = document.getElementById("music");
+const btnPlay = document.getElementById("btnPlay");
+let playing = false;
+music.volume = 0.0;
+music.muted = false;
+
+async function fadeTo(target=1.0, ms=900){
+  const steps = 18;
+  const stepTime = ms/steps;
+  const start = music.volume;
+  const delta = (target - start)/steps;
+  for(let i=0;i<steps;i++){
+    music.volume = Math.max(0, Math.min(1, start + delta*(i+1)));
+    await new Promise(r=>setTimeout(r, stepTime));
+  }
+}
+
+btnPlay.addEventListener("click", async ()=>{
+  try{
+    if(!playing){
+      await music.play();
+      playing = true;
+      btnPlay.textContent = "⏸ Pausar";
+      await fadeTo(1.0, 900);
+    }else{
+      await fadeTo(0.0, 350);
+      music.pause();
+      playing = false;
+      btnPlay.textContent = "▶ Música";
+    }
+  }catch(e){
+    alert("Tu navegador bloqueó el audio. Toca la pantalla y vuelve a presionar ▶ Música.");
+  }
+});
+
+/* ================== Abrir sorpresa (muestra todo, intenta música, corazones) ================== */
+btnOpen.onclick = async () => {
+  splash.style.display = "none";
+  main.classList.add("show");
+  try{
+    await music.play();
+    playing = true;
+    btnPlay.textContent = "⏸ Pausar";
+    await fadeTo(1.0, 900);
+  }catch(e){}
+  lanzarCorazones(120);
+};
+
+/* ================== Contador desde 02/01/2024 ================== */
+function formatPlural(n, s){
+  return `${n} ${s}${n === 1 ? "" : "s"}`;
+}
+function diffYMD(start, end){
+  let y = end.getFullYear() - start.getFullYear();
+  let m = end.getMonth() - start.getMonth();
+  let d = end.getDate() - start.getDate();
+  if(d < 0){
+    const prevMonthDays = new Date(end.getFullYear(), end.getMonth(), 0).getDate();
+    d += prevMonthDays;
+    m -= 1;
+  }
+  if(m < 0){
+    m += 12;
+    y -= 1;
+  }
+  return { y, m, d };
+}
+function updateCounter(){
+  const start = new Date(2024, 0, 2, 0, 0, 0);
+  const now = new Date();
+
+  const { y, m, d } = diffYMD(start, now);
+  const ms = now - start;
+  const totalMinutes = Math.floor(ms / 60000);
+  const totalHours = Math.floor(ms / 3600000);
+  const totalDays = Math.floor(ms / 86400000);
+
+  document.getElementById("counterPretty").textContent =
+    `❤️ ${formatPlural(y,"año")} • ${formatPlural(m,"mes")} • ${formatPlural(d,"día")} juntos`;
+
+  document.getElementById("counterTotal").textContent =
+    `≈ ${totalDays.toLocaleString()} días • ${totalHours.toLocaleString()} horas • ${totalMinutes.toLocaleString()} minutos`;
+}
+updateCounter();
+setInterval(updateCounter, 1000);
+
+/* ================== Fotos + historia ================== */
+const FOTOS = [
+  "assets/foto1.JPEG",
+  "assets/foto2.JPEG",
+  "assets/foto3.JPEG",
+  "assets/foto4.JPEG",
+  "assets/foto5.JPEG",
+  "assets/foto6.JPEG",
+  "assets/foto7.JPEG",
+  "assets/foto8.JPEG",
+  "assets/foto9.JPEG",
+  "assets/foto10.JPEG"
+];
+
+const HISTORIA = [
+  { cap:"Capítulo 1", titulo:"Todo empezó contigo", texto:"Ese momento en el que la vida dijo: ‘mira… aquí es’." },
+  { cap:"Capítulo 2", titulo:"Tu sonrisa me calma", texto:"Cuando sonríes, el mundo se vuelve más suave." },
+  { cap:"Capítulo 3", titulo:"Noches bonitas", texto:"De esas que no se olvidan… porque se sienten como hogar." },
+  { cap:"Capítulo 4", titulo:"Donde estés tú", texto:"Ahí quiero estar. Sin complicaciones, solo contigo." },
+  { cap:"Capítulo 5", titulo:"Pequeñas aventuras", texto:"Cualquier lugar se vuelve especial si es de tu mano." },
+  { cap:"Capítulo 6", titulo:"Esa paz", texto:"Tu compañía tiene algo: ordena el caos y me da calma." },
+  { cap:"Capítulo 7", titulo:"Abrazo seguro", texto:"Tu abrazo es mi lugar favorito. Siempre." },
+  { cap:"Capítulo 8", titulo:"Risas y locuras", texto:"Gracias por reír conmigo… incluso en los días pesados." },
+  { cap:"Capítulo 9", titulo:"Aquí me quedo", texto:"No perfecto, pero real. Lo nuestro se construye bonito." },
+  { cap:"Capítulo 10", titulo:"22 primaveras", texto:"Hoy celebro tu vida, mi chulita. Y yo… te elijo todos los días." }
+];
+
+const timeline = document.getElementById("timeline");
+
+FOTOS.forEach((src, i)=>{
+  const h = HISTORIA[i] || { cap:`Capítulo ${i+1}`, titulo:"Un recuerdo bonito", texto:"Te amo." };
+  const el = document.createElement("div");
+  el.className = "chapter";
+  el.innerHTML = `
+    <div class="photo" data-src="${src}" data-title="${h.cap} • ${h.titulo}">
+      <img src="${src}" alt="${h.titulo}">
+    </div>
+    <div>
+      <div><span class="chip">💗 ${h.cap}</span></div>
+      <div class="chapterH">${h.titulo}</div>
+      <p class="chapterP">${h.texto}</p>
+    </div>
+  `;
+  timeline.appendChild(el);
+});
+
+/* ================== Modal ================== */
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+const modalTitle = document.getElementById("modalTitle");
+const btnClose = document.getElementById("btnClose");
+
+function openModal(src, title){
+  modal.classList.add("open");
+  modal.setAttribute("aria-hidden","false");
+  modalImg.src = src;
+  modalTitle.textContent = title || "📷";
+}
+function closeModal(){
+  modal.classList.remove("open");
+  modal.setAttribute("aria-hidden","true");
+  modalImg.src = "";
+}
+
+btnClose.addEventListener("click", closeModal);
+modal.addEventListener("click", (e)=>{ if(e.target === modal) closeModal(); });
+window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
+
+document.querySelectorAll(".photo").forEach(p=>{
+  p.addEventListener("click", ()=> openModal(p.dataset.src, p.dataset.title));
+});
+
+/* ================== Corazones ================== */
+document.getElementById("btnHearts").onclick = ()=> lanzarCorazones(120);
+
+function lanzarCorazones(n){
+  for(let i=0;i<n;i++){
+    const h=document.createElement("div");
+    h.className="float";
+    h.style.left=(Math.random()*100)+"vw";
+    h.style.animationDuration=(2.2+Math.random()*2.8)+"s";
+    h.style.opacity=(0.65+Math.random()*0.35);
+    const hue = 330 + Math.random()*30;
+    h.style.background = `hsl(${hue},95%,${58+Math.random()*10}%)`;
+    h.style.width = (12+Math.random()*12) + "px";
+    h.style.height = h.style.width;
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6500);
+  }
+}
+
+/* ================== Frase random ================== */
+const FRASES = [
+  "Eres esa parte bonita del día que siempre quiero repetir.",
+  "Mi plan favorito: verte feliz. Hoy y siempre.",
+  "Gracias por existir, mi amor.",
+  "Mi lugar favorito siempre será contigo.",
+  "Ojalá cumplir cada sueño juntos.",
+  "Te amo hoy… y todos los días que vienen."
+];
+document.getElementById("btnMsg").onclick = ()=>{
+  document.getElementById("quote").textContent =
+    "“" + FRASES[Math.floor(Math.random()*FRASES.length)] + "”";
+};
+</script>
+
+</body>
+</html>
